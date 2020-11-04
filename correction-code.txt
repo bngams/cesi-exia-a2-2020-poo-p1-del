@@ -1,0 +1,136 @@
+class CLpoint
+{
+private:
+int x;
+int y;
+void ini_obj(double, double);
+public:
+CLpoint(void);
+CLpoint(double,double);
+CLpoint(CLpoint&);
+void gauche();
+void droite();
+void haut();
+void bas();
+void setX(double);
+void setY(double);
+int getX(void);
+int getY(void);
+};
+#include "pch.h"
+#include "CLpersonne.h"
+#include <iostream>
+CLpoint::CLpoint(void)
+{
+this->ini_obj(0, 0);
+}
+CLpoint::CLpoint(double x, double y)
+{
+this->ini_obj(x, y);
+}
+CLpoint::CLpoint(CLpoint& p)
+{
+this->ini_obj(p.getX(), p.getY());
+}
+void CLpoint::ini_obj(double x, double y)
+{
+this->setX(x);
+this->setY(y);
+}
+void CLpoint::gauche()
+{
+if (this->getX() - 1 >= 0)
+{
+this->setX(-1);
+}
+}
+void CLpoint::droite()
+{
+this->setX(1);
+}
+void CLpoint::haut()
+{
+this->setY(this->getY()+1);
+}
+void CLpoint::bas()
+{
+if (this->getY() - 1 >= 0)
+{
+this->setY(this->getY()-1);
+}
+}
+void CLpoint::setX(double x)
+{
+if (x < 0)
+{
+this->x = 0;
+}
+else
+{
+this->x = x;
+}
+}
+void CLpoint::setY(double y)
+{
+if (y < 0)
+{
+this->y = 0;
+}
+else
+{
+this->y = y;
+}
+}
+int CLpoint::getX(void)
+{
+return this->x;
+}
+int CLpoint::getY(void)
+{
+return this->y;
+}
+#include"pch.h"
+#include"CLpersonne.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+void afficherPoint(CLpoint);
+void afficherPoint(CLpoint*);
+void calculerDistance(CLpoint, CLpoint);
+void calculerDistance(CLpoint*, CLpoint*);
+void main(void)
+{
+CLpoint p1;
+CLpoint p2(1, 1);
+CLpoint* p3;
+CLpoint* p4;
+p3 = new CLpoint(0, 0);
+p4 = new CLpoint(1, 1);
+afficherPoint(p1);
+afficherPoint(p2);
+afficherPoint(p3);
+afficherPoint(p4);
+
+calculerDistance(p1, p2);
+calculerDistance(p3, p4);
+}
+void afficherPoint(CLpoint point)
+{
+cout << point.getX() << "-" << point.getY() << endl;
+}
+void afficherPoint(CLpoint* point)
+{
+cout << point->getX() << "-" << point->getY() << endl;
+}
+void calculerDistance(CLpoint p1, CLpoint p2)
+{
+double distance;
+distance = sqrt(pow(p2.getX() - p1.getX(), 2) + pow(p2.getX() - p1.getX(), 2));
+cout << "La distance est de : " << distance << endl;
+}
+void calculerDistance(CLpoint* p1, CLpoint* p2)
+{
+double distance;
+distance = sqrt(pow(p2->getX() - p1->getX(), 2) + pow(p2->getX() - p1->getX(), 2));
+cout << "La distance est de : " << distance << endl;
+}
