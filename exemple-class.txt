@@ -1,0 +1,30 @@
+class Point {
+	private int x;
+	private int y;
+	public String name;
+
+
+	constructor....
+	
+	// accesseurs
+	// getter
+	public getX() {
+
+	}
+	
+	private formatX() {
+	
+	}
+
+	// set
+	public int setX(int x) {
+		return this.formatX()
+	}
+}
+
+
+Point p1 = new Point(1,1);
+Point p2 = new Point(2,2);
+
+// p1.x => p1.getX();
+p1.name
